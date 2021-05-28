@@ -1,9 +1,8 @@
-import os
 from flask import Flask
 from flask import render_template
 from flask import request
+from flask import Flask, redirect, url_for
 import re
-import os
 import base64
 import time
 import sys
@@ -18,12 +17,10 @@ import os
 import io
 from flask import request
 import cv2
-import numpy as np
 from PIL import Image
 from flask import  jsonify
-import tensorflow as tf
-from flask import Flask
-from flask import render_template
+from binascii import a2b_base64
+from urllib.request import urlopen
 
 app = Flask(__name__)
 UPLOAD_FOLDER="/home/jainsam123/Downloads/newProj/static"
@@ -87,16 +84,23 @@ def preprocess_image(image_location):
 
     return image
 
-
+def Convert(lst):
+    res_dct = {lst[i]: lst[i + 1] for i in range(0, len(lst), 2)}
+    return res_dct
+  
+dicts={}
 @app.route('/',methods=["GET","POST"])
 
 def upload_predict():
-
+    top_k=[];
+    predicted_label=0;
     if request.method == "POST":
-        image_file = request.files["image"]
-        if image_file:
-            image_location = os.path.join(UPLOAD_FOLDER, image_file.filename)
-            image_file.save(image_location)
+        data = request.form['string']
+        if data:
+            image_location='/home/jainsam123/Downloads/newProj/image.jpg'
+            response = urlopen(data)
+            with open('image.jpg', 'wb') as f:
+                f.write(response.file.read())
             #input_image = Image.open(image_location)
             image = preprocess_image(image_location)
             prediction_probs = model.predict(image)
@@ -108,17 +112,47 @@ def upload_predict():
             top_k = get_neighbors(predicted_label, input_feature_vectors, MAX_TOP_K)
             
             # print(predicted_label)
-
             for x in range(MAX_TOP_K):
                 print (top_k[x]["asin"])
+                dicts[x]=top_k[x]["asin"]
+            dicts[31]=labels[predicted_label]
 
-
-
-
+            
             # print(prediction_probs)
-            return render_template("index.html", prediction=2,img_name=top_k , clothType=labels[predicted_label])
+            return dicts
 
-    return render_template("index.html", prediction=0 , img_name= [], clothType=None)
+    return render_template("index.html", prediction=2 , img_name= top_k, clothType=labels[predicted_label])
+
+@app.route('/take_pic',methods=["GET","POST"])
+def disp_pic():
+    if request.method=="GET":
+        print(dicts)
+        return render_template("prediction.html", dicts= dicts)
+
+
+# def disp_pic():
+#     data = request.form['string']
+#     # print(data)
+
+#     response = urlopen(data)
+#     with open('image.jpg', 'wb') as f:
+#         f.write(response.file.read())
+#     image_location='/home/jainsam123/Downloads/newProj/image.jpg'
+#     image = preprocess_image(image_location)
+#     prediction_probs = model.predict(image)
+#     predicted_label = np.argmax(prediction_probs, axis=1)[0]
+#     input_feature_vectors = feature_extractor.predict(image)
+#     input_feature_vectors = input_feature_vectors.flatten()
+#     MAX_TOP_K=30
+#     input_feature_vectors = input_feature_vectors / input_feature_vectors.max()
+#     top_k = get_neighbors(predicted_label, input_feature_vectors, MAX_TOP_K)
+
+    
+
+#     for x in range(MAX_TOP_K):
+#         print (top_k[x]["asin"])
+
+#     return render_template("index.html",prediction=2,img_name=top_k , clothType=labels[predicted_label])
 
 if __name__ == '__main__':
    app.run(port=5000,debug=True)  

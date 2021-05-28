@@ -1,0 +1,14 @@
+body {
+  height: 100%;
+  background: url("https://source.unsplash.com/twukN12EN7c/1920x1080") no-repeat
+    center center fixed;
+  font-size: 1rem;
+}
+
+#myVideo {
+  border-radius: 10px;
+  border: 2px solid #b22222;
+  border-top: 2px solid #b22222;
+  width: 93%;
+  height: 93%;
+}

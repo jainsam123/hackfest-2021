@@ -1,0 +1,18 @@
+body {
+    height: 100%;
+    background: url('https://source.unsplash.com/twukN12EN7c/1920x1080') no-repeat center center fixed;
+    /* -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover; */
+    font-size: 1rem;
+  }
+.back{
+    background: rgb(8,138,115);
+background: linear-gradient(90deg, rgba(8,138,115,0.8883928571428571) 0%, rgba(9,121,48,1) 43%, rgba(204,121,17,1) 87%);
+}
+img {
+  width:  100px;
+  height: 100px;
+  object-fit: cover;
+}

@@ -1,3 +1,33 @@
 i am using linux ubuntu 20.04
-<i>first of all create a virtual environment using command</i>
-python3 -m venv <name of environment>
+first of all install python in your pc
+then create a virtual environment in the same folder in which you downloaded the whole code using command
+python3 -m venv <name of environment>  ( name of environment = sameer in my case i will use this name in further commands )
+
+activate your virtual environment 
+  . sameer/bin/activate
+  
+install Flask 
+  pip install Flask
+  
+install numpy 
+  pip install numpy 
+  
+install tensorflow 
+  pip install tensorflow
+  
+install annoy 
+  pip install annoy
+  
+install opencv 
+  pip install opencv-python
+ 
+install Pillow
+  pip install Pillow
+  
+now run the api.py file using 
+  python api.py
+ 
+the website will be up and running on http://localhost:5000/
+
+
+

@@ -33,6 +33,13 @@ for filename in os. listdir(path):
 To classify the images, we used Xception model from Google and used it’s global average pooling layer(second last layer) to extract the feature vector and apply Knn to predict top-k similar feature vector in our database. (In our case we k=30). 
 
 <h1 id="res">4. Result:</h1>
-<img src="img/Screenshot from 2021-05-02 11-28-35.png">
+<img src="img/Screenshot from 2021-05-30 15-56-53.png">
+<img src="img/Screenshot from 2021-05-30 15-57-11.png">
+<img src="img/Screenshot from 2021-05-30 15-57-20.png">
+<img src="img/Screenshot from 2021-05-30 15-57-24.png">
+<img src="img/Screenshot from 2021-05-30 15-57-55.png">
+<img src="img/Screenshot from 2021-05-30 15-58-09.png">
+<img src="img/Screenshot from 2021-05-30 15-58-28.png">
+<img src="img/Screenshot from 2021-05-30 15-58-35.png">
 
 

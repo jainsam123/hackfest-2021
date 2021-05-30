@@ -155,5 +155,7 @@ def disp_pic():
 #     return render_template("index.html",prediction=2,img_name=top_k , clothType=labels[predicted_label])
 
 if __name__ == '__main__':
-   app.run(port=5000,debug=True)  
+#    app.run(port=5000,debug=True)
+    app.debug=True
+    app.run(host="0.0.0.0")
  

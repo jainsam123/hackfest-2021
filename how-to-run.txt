@@ -1,1 +1,3 @@
-
+i am using linux ubuntu 20.04
+<i>first of all create a virtual environment using command</i>
+python3 -m venv <name of environment>

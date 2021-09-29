@@ -6,7 +6,7 @@
 <a href="#pre" >2. Preprocessing </a><br>
 <a href="#model" >3. Model</a><br>
 <a href="#res" >4. Result</a><br>
-<a href="#app" >5. Appendix</a><br>
+<a href="#team" >5. Team Members</a><br>
 <hr>
 <h1 id="obj">1. Problem Statement</h1>
 
@@ -42,4 +42,8 @@ To classify the images, we used Xception model from Google and used it’s globa
 <img src="img/Screenshot from 2021-05-30 15-58-28.png">
 <img src="img/Screenshot from 2021-05-30 15-58-35.png">
 
-
+<h1 id="team">5 Team Members</h1>
+<strong>1. Sameer Jain</strong>
+<strong>2. Aryan Garg</strong>
+<strong>3. R Aakash</strong>
+<strong>4. Prince Arya</strong>
